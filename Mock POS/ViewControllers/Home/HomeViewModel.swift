@@ -11,6 +11,7 @@ import Foundation
 protocol HomeViewModeling {
     var viewDelegate: HomeViewControllerDelegating? { get set }
     func sendDataToTerminal(payload: String)
+    func gotoDevice()
 }
 
 final class HomeViewModel: NSObject, HomeViewModeling {
@@ -31,7 +32,10 @@ final class HomeViewModel: NSObject, HomeViewModeling {
     }
     
     func sendDataToTerminal(payload: String) {
-        
+    }
+    
+    func gotoDevice() {
+        coordinator.gotoDevice()
     }
     
     private func cleanUp() {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		538F74552912B9C1008F65D0 /* DeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538F74532912B9C1008F65D0 /* DeviceViewController.swift */; };
+		538F74562912B9C1008F65D0 /* DeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 538F74542912B9C1008F65D0 /* DeviceViewController.xib */; };
+		538F74582912B9CE008F65D0 /* DeviceCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538F74572912B9CE008F65D0 /* DeviceCoordinator.swift */; };
 		53ACAC9F2906CB2F00EBFFF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ACAC9E2906CB2F00EBFFF5 /* AppDelegate.swift */; };
 		53ACACA82906CB3100EBFFF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53ACACA72906CB3100EBFFF5 /* Assets.xcassets */; };
 		53ACACAB2906CB3100EBFFF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53ACACA92906CB3100EBFFF5 /* LaunchScreen.storyboard */; };
@@ -25,6 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		538F74532912B9C1008F65D0 /* DeviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceViewController.swift; sourceTree = "<group>"; };
+		538F74542912B9C1008F65D0 /* DeviceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeviceViewController.xib; sourceTree = "<group>"; };
+		538F74572912B9CE008F65D0 /* DeviceCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCoordinator.swift; sourceTree = "<group>"; };
 		53ACAC9B2906CB2F00EBFFF5 /* Mock POS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mock POS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		53ACAC9E2906CB2F00EBFFF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53ACACA72906CB3100EBFFF5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,7 +143,10 @@
 		53ACACD129116CE000EBFFF5 /* Device */ = {
 			isa = PBXGroup;
 			children = (
+				538F74572912B9CE008F65D0 /* DeviceCoordinator.swift */,
 				53ACACD229116CF700EBFFF5 /* DeviceViewModel.swift */,
+				538F74532912B9C1008F65D0 /* DeviceViewController.swift */,
+				538F74542912B9C1008F65D0 /* DeviceViewController.xib */,
 			);
 			path = Device;
 			sourceTree = "<group>";
@@ -200,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				538F74562912B9C1008F65D0 /* DeviceViewController.xib in Resources */,
 				53ACACAB2906CB3100EBFFF5 /* LaunchScreen.storyboard in Resources */,
 				53ACACA82906CB3100EBFFF5 /* Assets.xcassets in Resources */,
 				53ACACC82909057E00EBFFF5 /* HomeViewController.xib in Resources */,
@@ -222,6 +232,8 @@
 				53ACACD0291164D800EBFFF5 /* TransferService.swift in Sources */,
 				53ACACB92907D2CE00EBFFF5 /* Log.swift in Sources */,
 				53ACACC22908220800EBFFF5 /* DeviceModel.swift in Sources */,
+				538F74552912B9C1008F65D0 /* DeviceViewController.swift in Sources */,
+				538F74582912B9CE008F65D0 /* DeviceCoordinator.swift in Sources */,
 				53ACACCC290905A000EBFFF5 /* HomeCoordinator.swift in Sources */,
 				53ACACB62907D22900EBFFF5 /* Int+extension.swift in Sources */,
 				53ACACB42907D1BA00EBFFF5 /* TimeInterval+extension.swift in Sources */,

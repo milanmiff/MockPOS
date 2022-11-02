@@ -7,7 +7,9 @@
 
 import UIKit
 
-protocol HomeCoordinating: Coordinating { }
+protocol HomeCoordinating: Coordinating {
+    func gotoDevice()
+}
 
 final class HomeCoordinator: HomeCoordinating {
     private weak var presenter: UINavigationController?
@@ -20,5 +22,11 @@ final class HomeCoordinator: HomeCoordinating {
         let viewModel = HomeViewModel(coordinator: self)
         let viewController = HomeViewController(viewModel: viewModel)
         presenter?.pushViewController(viewController, animated: true)
+    }
+    
+    func gotoDevice() {
+        guard let presenter = presenter else { return }
+        let deviceCoordinator = DeviceCoordinator(presenter: presenter)
+        deviceCoordinator.start()
     }
 }

@@ -39,4 +39,8 @@ final class HomeViewController: UIViewController, HomeViewControllerDelegating {
     @IBAction func handleSendTapp(_ sender: Any) {
     }
     
+    @IBAction func handleTapDevice(_ sender: Any) {
+        viewModel.gotoDevice()
+    }
+    
 }

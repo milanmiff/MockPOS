@@ -9,12 +9,14 @@ import CoreBluetooth
 import Foundation
 
 protocol DeviceViewModeling {
-    //    var viewDelegate: DeviceViewControllerDelegating? { get set }
+    var viewDelegate: DeviceViewControllerDelegating? { get set }
     var textToSend: String? { get set }
     func stopAdvertising()
+    func sendData()
 }
 
 final class DeviceViewModel: NSObject, DeviceViewModeling {
+    weak var viewDelegate: DeviceViewControllerDelegating?
     var textToSend: String?
     private var peripheralManager: CBPeripheralManager!
     private var isAdvertising = true
@@ -42,10 +44,12 @@ final class DeviceViewModel: NSObject, DeviceViewModeling {
         transferService.characteristics = [characteristic]
         peripheralManager.add(transferService)
         transferCharacteristic = characteristic
-        
+        peripheralManager.startAdvertising(([CBAdvertisementDataServiceUUIDsKey: [TransferService.serviceUUID], CBAdvertisementDataLocalNameKey: "BLEphone"]))
     }
     
-    private func sendData() {
+    
+    // TODO: - Fix this
+    func sendData() {
         guard let transferCharacteristic = transferCharacteristic else { return }
         if isSendingEOM {
             let didSend = peripheralManager.updateValue("EOM".data(using: .utf8)!, for: transferCharacteristic, onSubscribedCentrals: nil)
@@ -94,19 +98,19 @@ extension DeviceViewModel: CBPeripheralManagerDelegate {
         isAdvertising = peripheral.state == .poweredOn
         switch peripheral.state {
         case .poweredOn:
-            Log.info("CBManager is powered on")
+            Log.info("peripheral is powered on")
             setupPeripheral()
         case .poweredOff:
-            Log.info("CBManager is not powered on")
+            Log.info("peripheral is not powered on")
             return
         case .resetting:
-            Log.info("CBManager is resetting")
+            Log.info("peripheral is resetting")
             return
         case .unauthorized:
             Log.warning("You are not authorized to use Bluetooth")
             return
         case .unknown:
-            Log.warning("CBManager state is unknown")
+            Log.warning("peripheral state is unknown")
             return
         case .unsupported:
             Log.warning("Bluetooth is not supported on this device")
@@ -133,6 +137,10 @@ extension DeviceViewModel: CBPeripheralManagerDelegate {
     
     func peripheralManagerIsReady(toUpdateSubscribers peripheral: CBPeripheralManager) {
         sendData()
+    }
+    
+    func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveRead request: CBATTRequest) {
+        Log.info("Received read request bytes: \(request.debugDescription)")
     }
     
     func peripheralManager(_ peripheral: CBPeripheralManager, didReceiveWrite requests: [CBATTRequest]) {
